@@ -4,11 +4,11 @@ import Funcoes.funcoes as malha
 import Dados.constantes as const
 import json
 
-app = Flask(__name__)
-CORS(app)
+main = Flask(__name__)
+CORS(main)
 
 
-@app.route("/", methods=['POST'])
+@main.route("/", methods=['POST'])
 def home():
     try:
         data = request.get_json()  # Pegando os dados da Requisição
@@ -59,4 +59,4 @@ if __name__ == '__main__':
     FechadaComGanho = malha.FechadaComGanho()  # Malha Fechada com ganho
     FechadaComGanhoIntegral = malha.FechadaComGanhoIntegral()  # Malha Fechada com ganho proporcional e integral
 
-    app.run(debug=True)
+    main.run(debug=True)

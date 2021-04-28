@@ -1,7 +1,7 @@
 import Dados.constantes as const
 from abc import ABC, abstractmethod
 import control as con
-from Funcoes.funcoesAux import accommodationPoint, errorCalculate, KpKi
+from Funcoes.GanhoKpKi import accommodationPoint, errorCalculate, KpKi
 
 
 class Malha(ABC):
