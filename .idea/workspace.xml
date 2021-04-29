@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2d0f56e0-2e49-43f8-9c96-4f5f2767d039" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dados/dados.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dados/dados.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Funcoes/GanhoKpKi.py" beforeDir="false" afterPath="$PROJECT_DIR$/Funcoes/funcoesAux.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Funcoes/funcoes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Funcoes/funcoes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +30,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Área de Trabalho/Inatel/planta-de-nivel-api-master" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -45,6 +47,56 @@
       <set>
         <option value="PythonConfigurationType" />
       </set>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="API_C213" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Python" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Python" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
     </option>
   </component>
   <component name="SvnConfiguration">
@@ -65,13 +117,33 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1619716633937" />
-    <state x="408" y="187" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1619653172062">
+    <state x="408" y="187" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1619717028798">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="408" y="187" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1619653172062" />
+    <state x="408" y="187" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1619717028798" />
     <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1619716170985">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768@0.0.1366.768" timestamp="1619716170985" />
+    <state x="463" y="139" key="FileChooserDialogImpl" timestamp="1619718933898">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="463" y="139" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1619718933898" />
+    <state width="920" height="139" key="GridCell.Tab.0.bottom" timestamp="1619721337520">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="920" height="139" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1619721337520" />
+    <state width="920" height="139" key="GridCell.Tab.0.center" timestamp="1619721337520">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="920" height="139" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1619721337520" />
+    <state width="920" height="139" key="GridCell.Tab.0.left" timestamp="1619721337520">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="920" height="139" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1619721337520" />
+    <state width="920" height="139" key="GridCell.Tab.0.right" timestamp="1619721337520">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="920" height="139" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1619721337520" />
   </component>
 </project>
