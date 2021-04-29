@@ -8,30 +8,29 @@ CORS(main)
 
 @main.route("/", methods=['POST'])
 def home():
-    malhaOriginal.execute()
-    malhaOriginalEmRespostaEntrada.execute()
-    malhaAberta.execute()
-    malhaFechada.execute()
-    FechadaComGanho.execute()
-    FechadaComGanhoIntegral.execute()
+    malhaEntrada.execute()
+    minimosQuadrados.execute()
+    saidaMalhaAberta.execute()
+    saidaMalhaFechada.execute()
+    saidaMalhaFechadaComGanho.execute()
+    saidaMalhaFechadaComGanhoPI.execute()
 
-    # Formando o objeto que será enviado em formato JSON
     malhas = {
-        f'{malhaOriginal.nome}': malhaOriginal.returnData(),
-        f'{malhaOriginalEmRespostaEntrada.nome}': malhaOriginalEmRespostaEntrada.returnData(),
-        f'{malhaAberta.nome}': malhaAberta.returnData(),
-        f'{malhaFechada.nome}': malhaFechada.returnData(),
-        f'{FechadaComGanho.nome}': FechadaComGanho.returnData(),
-        f'{FechadaComGanhoIntegral.nome}': FechadaComGanhoIntegral.returnData()
+        f'{malhaEntrada.nome}': malhaEntrada.returnData(),
+        f'{minimosQuadrados.nome}': minimosQuadrados.returnData(),
+        f'{saidaMalhaAberta.nome}': saidaMalhaAberta.returnData(),
+        f'{saidaMalhaFechada.nome}': saidaMalhaFechada.returnData(),
+        f'{saidaMalhaFechadaComGanho.nome}': saidaMalhaFechadaComGanho.returnData(),
+        f'{saidaMalhaFechadaComGanhoPI.nome}': saidaMalhaFechadaComGanhoPI.returnData()
     }
     return jsonify(malhas)
 
 
 if __name__ == '__main__':
-    malhaOriginal = malha.Original()
-    malhaOriginalEmRespostaEntrada = malha.OriginalEmRespostaEntrada()
-    malhaAberta = malha.Aberta()
-    malhaFechada = malha.Fechada()
-    FechadaComGanho = malha.FechadaComGanho()
-    FechadaComGanhoIntegral = malha.FechadaComGanhoIntegral()
+    malhaEntrada = malha.MalhaEntrada()
+    minimosQuadrados = malha.MinimosQuadrados()
+    saidaMalhaAberta = malha.MalhaAberta()
+    saidaMalhaFechada = malha.MalhaFechada()
+    saidaMalhaFechadaComGanho = malha.MalhaFechadaComGanho()
+    saidaMalhaFechadaComGanhoPI = malha.MalhaFechadaComGanhoPI()
     main.run(debug=True)

@@ -1,6 +1,6 @@
 import scipy.io as sio
 from numpy import arange
-from Funcoes.minimosQuadrados import minimosQuadrados
+from Funcoes.funcoesAux import minimosQuadrados
 
 
 def dados():

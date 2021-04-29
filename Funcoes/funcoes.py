@@ -1,4 +1,4 @@
-from Funcoes.funcoesAux import accommodationPoint
+from Funcoes.funcoesAux import pontoDeAcomodacao
 from abc import ABC
 import Dados.dados as dados
 import control as con
@@ -13,7 +13,7 @@ class Malha(ABC):
         self.valorEstacionario = 0
 
 
-class Original(Malha):
+class MalhaEntrada(Malha):
     def __init__(self):
         super().__init__('original')
 
@@ -30,7 +30,7 @@ class Original(Malha):
         return malha
 
 
-class OriginalEmRespostaEntrada(Malha):
+class MinimosQuadrados(Malha):
     def __init__(self):
         super().__init__('originalMinimoQuadrado')
         self.VALOR_ENTRADA = dados.ENTRADA[0][1]
@@ -49,7 +49,7 @@ class OriginalEmRespostaEntrada(Malha):
         return malha
 
 
-class Aberta(Malha):
+class MalhaAberta(Malha):
     def __init__(self):
         super().__init__('malhaAberta')
 
@@ -67,7 +67,7 @@ class Aberta(Malha):
         return malha
 
 
-class Fechada(Malha):
+class MalhaFechada(Malha):
     def __init__(self):
         super().__init__('malhaFechada')
 
@@ -86,7 +86,7 @@ class Fechada(Malha):
         return malha
 
 
-class FechadaComGanhoIntegral(Malha):
+class MalhaFechadaComGanhoPI(Malha):
     def __init__(self):
         super().__init__('malhaFechadaControlador')
         self.kp = dados.KP
@@ -106,7 +106,7 @@ class FechadaComGanhoIntegral(Malha):
         info = con.step_info(sysGanhoIntegral, self.xout)
         self.valorEstacionario = info['SteadyStateValue'] * dados.AMPLITUDE
         self.tempo_acomodacao = info['SettlingTime']
-        self.valor_acomodacao = accommodationPoint(self.yout, self.valorEstacionario)
+        self.valor_acomodacao = pontoDeAcomodacao(self.yout, self.valorEstacionario)
         self.overshootX = info['PeakTime']
         self.overshootY = info['Peak'] * dados.AMPLITUDE
         self.overshoot = info['Overshoot']
@@ -129,7 +129,7 @@ class FechadaComGanhoIntegral(Malha):
 
 # ********************************************************************************************************************
 
-class FechadaComGanho(Malha):
+class MalhaFechadaComGanho(Malha):
 
     def __init__(self):
         super().__init__('malhaFechadaGanhoProporcional')
