@@ -1,8 +1,6 @@
-from flask import Flask, jsonify, request, Response
-from flask_cors import CORS
 import Funcoes.funcoes as malha
-import Dados.constantes as const
-import json
+from flask import Flask, jsonify
+from flask_cors import CORS
 
 main = Flask(__name__)
 CORS(main)
@@ -10,27 +8,6 @@ CORS(main)
 
 @main.route("/", methods=['POST'])
 def home():
-    try:
-        data = request.get_json()  # Pegando os dados da Requisição
-    except:
-        pass
-
-    try:
-        const.SP = data['sp']
-    except:
-        pass
-
-    try:
-        const.OVERSHOOT = data['overshoot']
-    except:
-        pass
-
-    try:
-        const.TS = data['ts']
-    except:
-        pass
-
-    # Executando as operações
     malhaOriginal.execute()
     malhaOriginalEmRespostaEntrada.execute()
     malhaAberta.execute()
@@ -51,12 +28,10 @@ def home():
 
 
 if __name__ == '__main__':
-    # Instanciando classes
-    malhaOriginal = malha.Original()  # Malha Original
-    malhaOriginalEmRespostaEntrada = malha.OriginalEmRespostaEntrada()  # Malha minimos quadrados
-    malhaAberta = malha.Aberta()  # Malha Aberta
-    malhaFechada = malha.Fechada()  # Malha Fechada
-    FechadaComGanho = malha.FechadaComGanho()  # Malha Fechada com ganho
-    FechadaComGanhoIntegral = malha.FechadaComGanhoIntegral()  # Malha Fechada com ganho proporcional e integral
-
+    malhaOriginal = malha.Original()
+    malhaOriginalEmRespostaEntrada = malha.OriginalEmRespostaEntrada()
+    malhaAberta = malha.Aberta()
+    malhaFechada = malha.Fechada()
+    FechadaComGanho = malha.FechadaComGanho()
+    FechadaComGanhoIntegral = malha.FechadaComGanhoIntegral()
     main.run(debug=True)
