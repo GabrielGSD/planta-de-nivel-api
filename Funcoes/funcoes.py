@@ -1,12 +1,13 @@
 from Funcoes.GanhoKpKi import accommodationPoint, errorCalculate, KpKi
 from abc import ABC, abstractmethod
+import Dados.dados as dados
 import control as con
 
 
 class Malha(ABC):
     def __init__(self, name):
         self.nome = name
-        self.sys = con.TransferFunction(const.COEFICIENTE_B1, [1, -const.COEFICIENTE_A1], const.TEMPO_AMOSTRAGEM)
+        self.sys = con.TransferFunction(dados.COEFICIENTE_B1, [1, -dados.COEFICIENTE_A1], dados.TEMPO_AMOSTRAGEM)
 
         self.xout = []
         self.yout = []
@@ -35,8 +36,8 @@ class Original(Malha):
         super().__init__('original')
 
     def execute(self):
-        self.xout = const.TEMPO[0]
-        self.yout = const.SAIDA[0]
+        self.xout = dados.TEMPO[0]
+        self.yout = dados.SAIDA[0]
         self.valorEstacionario = self.yout[len(self.yout) - 1]
 
     def returnData(self):
@@ -50,10 +51,10 @@ class Original(Malha):
 class OriginalEmRespostaEntrada(Malha):
     def __init__(self):
         super().__init__('originalMinimoQuadrado')
-        self.VALOR_ENTRADA = const.ENTRADA[0][1]
+        self.VALOR_ENTRADA = dados.ENTRADA[0][1]
 
     def execute(self):
-        [self.xout, self.yout] = con.step_response(self.sys, const.TEMPO)
+        [self.xout, self.yout] = con.step_response(self.sys, dados.TEMPO)
         info = con.step_info(self.sys, self.xout)
         self.yout = self.yout * self.VALOR_ENTRADA
         self.valorEstacionario = info['SteadyStateValue'] * self.VALOR_ENTRADA
@@ -82,16 +83,16 @@ class Aberta(Malha):
         super().__init__('malhaAberta')
 
     def execute(self):
-        [self.xout, self.yout] = con.step_response(self.sys, const.TEMPO_CALCULO)
-        self.yout = self.yout * const.AMPLITUDE
+        [self.xout, self.yout] = con.step_response(self.sys, dados.TEMPO_CALCULO)
+        self.yout = self.yout * dados.AMPLITUDE
         info = con.step_info(self.sys, self.xout)
-        self.valorEstacionario = info['SteadyStateValue'] * const.AMPLITUDE
+        self.valorEstacionario = info['SteadyStateValue'] * dados.AMPLITUDE
         self.tempo_acomodacao = info['SettlingTime']
         self.valor_acomodacao = accommodationPoint(self.yout, self.valorEstacionario)
         self.overshootX = info['PeakTime']
-        self.overshootY = info['Peak'] * const.AMPLITUDE
+        self.overshootY = info['Peak'] * dados.AMPLITUDE
         self.overshoot = info['Overshoot']
-        self.erroRegimePermanente = errorCalculate(const.AMPLITUDE, self.valorEstacionario)
+        self.erroRegimePermanente = errorCalculate(dados.AMPLITUDE, self.valorEstacionario)
 
     def returnData(self):
         malha = {
@@ -110,18 +111,18 @@ class Fechada(Malha):
 
     def execute(self):
         sysFechada = con.feedback(self.sys, 1)
-        [self.xout, self.yout] = con.step_response(sysFechada, const.TEMPO_CALCULO)
-        self.yout = self.yout * const.AMPLITUDE
+        [self.xout, self.yout] = con.step_response(sysFechada, dados.TEMPO_CALCULO)
+        self.yout = self.yout * dados.AMPLITUDE
         info = con.step_info(sysFechada, self.xout)
-        self.valorEstacionario = info['SteadyStateValue'] * const.AMPLITUDE
+        self.valorEstacionario = info['SteadyStateValue'] * dados.AMPLITUDE
         self.tempo_acomodacao = info['SettlingTime']
         self.valor_acomodacao = accommodationPoint(self.yout, self.valorEstacionario)
         self.overshootX = info['PeakTime']
-        self.overshootY = info['Peak'] * const.AMPLITUDE
+        self.overshootY = info['Peak'] * dados.AMPLITUDE
         self.overshoot = info['Overshoot']
 
         # Erro em regime permanente
-        self.erroRegimePermanente = errorCalculate(const.AMPLITUDE, self.valorEstacionario)
+        self.erroRegimePermanente = errorCalculate(dados.AMPLITUDE, self.valorEstacionario)
 
     def returnData(self):
         malha = {
@@ -142,21 +143,21 @@ class FechadaComGanhoIntegral(Malha):
 
     def execute(self):
         self.kp, self.ki = KpKi(self.sys)
-        sysAux = con.TransferFunction([1, 0], [1, -1], const.TEMPO_AMOSTRAGEM)
-        sysControlador = sysAux * self.ki * const.TEMPO_AMOSTRAGEM + self.kp
+        sysAux = con.TransferFunction([1, 0], [1, -1], dados.TEMPO_AMOSTRAGEM)
+        sysControlador = sysAux * self.ki * dados.TEMPO_AMOSTRAGEM + self.kp
         sysGanhoIntegral = con.feedback(sysControlador * self.sys, 1)
-        [self.xout, self.yout] = con.step_response(sysGanhoIntegral, const.TEMPO_CALCULO)
-        self.yout = self.yout * const.AMPLITUDE
+        [self.xout, self.yout] = con.step_response(sysGanhoIntegral, dados.TEMPO_CALCULO)
+        self.yout = self.yout * dados.AMPLITUDE
         info = con.step_info(sysGanhoIntegral, self.xout)
-        self.valorEstacionario = info['SteadyStateValue'] * const.AMPLITUDE
+        self.valorEstacionario = info['SteadyStateValue'] * dados.AMPLITUDE
         self.tempo_acomodacao = info['SettlingTime']
         self.valor_acomodacao = accommodationPoint(self.yout, self.valorEstacionario)
         self.overshootX = info['PeakTime']
-        self.overshootY = info['Peak'] * const.AMPLITUDE
+        self.overshootY = info['Peak'] * dados.AMPLITUDE
         self.overshoot = info['Overshoot']
 
         # Erro em regime permanente
-        self.erroRegimePermanente = errorCalculate(const.AMPLITUDE, self.valorEstacionario)
+        self.erroRegimePermanente = errorCalculate(dados.AMPLITUDE, self.valorEstacionario)
 
     def returnData(self):
         malha = {
@@ -196,16 +197,16 @@ class FechadaComGanho(Malha):
         sysFechada = con.feedback(sysGanho, 1)
 
         # Resposta ao degrau
-        [self.xout, self.yout] = con.step_response(sysFechada, const.TEMPO_CALCULO)
+        [self.xout, self.yout] = con.step_response(sysFechada, dados.TEMPO_CALCULO)
 
         # "Alterando" amplitude do degrau
-        self.yout = self.yout * const.AMPLITUDE
+        self.yout = self.yout * dados.AMPLITUDE
 
         # Pegando as informações sobre o sistema
         info = con.step_info(sysFechada, self.xout)
 
         # Pegando o valor de estado estacionário
-        self.valorEstacionario = info['SteadyStateValue'] * const.AMPLITUDE
+        self.valorEstacionario = info['SteadyStateValue'] * dados.AMPLITUDE
 
         # Ponto de acomodação
         self.tempo_acomodacao = info['SettlingTime']
@@ -213,11 +214,11 @@ class FechadaComGanho(Malha):
 
         # Overshoot
         self.overshootX = info['PeakTime']
-        self.overshootY = info['Peak'] * const.AMPLITUDE
+        self.overshootY = info['Peak'] * dados.AMPLITUDE
         self.overshoot = info['Overshoot']
 
         # Erro em regime permanente
-        self.erroRegimePermanente = errorCalculate(const.AMPLITUDE, self.valorEstacionario)
+        self.erroRegimePermanente = errorCalculate(dados.AMPLITUDE, self.valorEstacionario)
 
     def returnData(self):
         malha = {

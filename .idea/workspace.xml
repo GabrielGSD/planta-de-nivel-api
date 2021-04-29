@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2d0f56e0-2e49-43f8-9c96-4f5f2767d039" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dados/constantes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dados/dados.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dados/dados.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Funcoes/GanhoKpKi.py" beforeDir="false" afterPath="$PROJECT_DIR$/Funcoes/GanhoKpKi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Funcoes/funcoes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Funcoes/funcoes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Funcoes/minimosQuadrados.py" beforeDir="false" afterPath="$PROJECT_DIR$/Funcoes/minimosQuadrados.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +40,13 @@
       <recent name="C:\Users\moise\AppData\Local\Programs\Python\API_C213\Dados" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="PythonConfigurationType" />
+      </set>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -59,6 +61,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1619716633937">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1619716633937" />
     <state x="408" y="187" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1619653172062">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
