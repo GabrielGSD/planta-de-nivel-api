@@ -6,7 +6,7 @@ main = Flask(__name__)
 CORS(main)
 
 
-@main.route("/", methods=['POST'])
+@main.route("/", methods=['GET'])
 def home():
     malhaEntrada.execute()
     minimosQuadrados.execute()
