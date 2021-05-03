@@ -24,8 +24,8 @@ class MalhaEntrada(Malha):
 
     def returnData(self):
         malha = {
-            'valoresY': self.yout.tolist(),
-            'valoresX': self.xout.tolist()
+            'value': self.yout.tolist(),
+            'x': self.xout.tolist()
         }
         return malha
 
@@ -43,8 +43,8 @@ class MinimosQuadrados(Malha):
 
     def returnData(self):
         malha = {
-            'valoresY': self.yout.tolist(),
-            'valoresX': self.xout.tolist()
+            'value': self.yout.tolist(),
+            'x': self.xout.tolist()
         }
         return malha
 
@@ -61,8 +61,8 @@ class MalhaAberta(Malha):
 
     def returnData(self):
         malha = {
-            'valoresY': self.yout.tolist(),
-            'valoresX': self.xout.tolist()
+            'value': self.yout.tolist(),
+            'x': self.xout.tolist()
         }
         return malha
 
@@ -80,8 +80,8 @@ class MalhaFechada(Malha):
 
     def returnData(self):
         malha = {
-            'valoresY': self.yout.tolist(),
-            'valoresX': self.xout.tolist()
+            'value': self.yout.tolist(),
+            'x': self.xout.tolist()
         }
         return malha
 
@@ -113,8 +113,8 @@ class MalhaFechadaComGanhoPI(Malha):
 
     def returnData(self):
         malha = {
-            'valoresY': self.yout.tolist(),
-            'valoresX': self.xout.tolist(),
+            'value': self.yout.tolist(),
+            'x': self.xout.tolist(),
             'overshoot': self.overshoot,
             'overshootX': self.overshootX,
             'overshootY': self.overshootY,
@@ -145,8 +145,8 @@ class MalhaFechadaComGanho(Malha):
 
     def returnData(self):
         malha = {
-            'valoresY': self.yout.tolist(),
-            'valoresX': self.xout.tolist()
+            'value': self.yout.tolist(),
+            'x': self.xout.tolist()
         }
 
         return malha
